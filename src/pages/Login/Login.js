@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
@@ -10,13 +10,13 @@ const Login = () => {
 
     const { loginUser, loginWithGoogle } = useContext(AuthContext)
 
-
+    const navigate = useNavigate()
 
     //login with email and password
     const handelSignIn = (data) => {
         loginUser(data.email, data.password)
             .then(result => {
-                
+                navigate('/')
             })
             .catch(err => console.error(err))
     }
@@ -25,16 +25,12 @@ const Login = () => {
     const handelGoogleLogin = () => {
         loginWithGoogle()
             .then(result => {
+                navigate('/')
                 // toast.success('successfully login')
                 
             })
             .catch(err => console.log(err))
     }
-
-
-
-
-
 
 
 

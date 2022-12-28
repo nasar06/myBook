@@ -8,7 +8,7 @@ const Register = () => {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
     
-    const { signUp, loginWithGoogle, UpdateProfileName } = useContext(AuthContext)
+    const { signUp, UpdateProfileName, loginWithGoogle } = useContext(AuthContext)
     
 
 
@@ -38,15 +38,13 @@ const Register = () => {
 
 
     //login with google
-    const handelGoogleLogin = async () => {
-        try {
-            // toast.success('successfully login')
-
-        
-
-        } catch (error) {
-            // toast.error(error.message)
-        }
+    const handelGoogleLogin = () => {
+        loginWithGoogle()
+            .then(result => {
+                // toast.success('successfully login')
+                
+            })
+            .catch(err => console.log(err))
     }
 
     
