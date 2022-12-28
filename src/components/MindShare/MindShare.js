@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { FaRegImages } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
-
+import moment from 'moment';
 
 const MindShare = () => {
 
@@ -14,14 +14,15 @@ const MindShare = () => {
         const form = e.target;
         const postText = form.postText.value;
         const postImg = form.postImg.value;
-
+        const time = moment().format('Do MM YYYY, h:mm:ss a')
         const postInfo = {
             postText,
             postImg: postImg?postImg:'',
             userEmail : user?.email,
             userName: user?.displayName,
             userTitle: 'Silver user',
-            userImg: user?.photoURL? user?.photoURL: ''
+            userImg: user?.photoURL? user?.photoURL: '',
+            time
 
         }
 
