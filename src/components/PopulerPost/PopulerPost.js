@@ -2,16 +2,17 @@ import React from 'react';
 
 const PopulerPost = () => {
     return (
-        <div>
-            <h2 className='mt-24 text-3xl text-gray-600 font-bold text-center mb-16'>Popular Posts</h2>
-            <div className='w-11/12 mx-auto flex flex-col items-center'>
-                <div className="rounded-md shadow-md sm:w-96 dark:bg-gray-900 dark:text-gray-100">
+        <div className='my-5'>
+            {/* <h2 className='mt-24 text-3xl text-gray-600 font-bold text-center mb-16'>Popular Posts</h2> */}
+            <div className='w-11/12 mx-auto flex gap-y-12 flex-col items-center'>
+                <div className="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+                    {/* profile */}
                     <div className="flex items-center justify-between p-3">
                         <div className="flex items-center space-x-2">
                             <img src="https://source.unsplash.com/50x50/?portrait" alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
                             <div className="-space-y-1">
-                                <h2 className="text-sm font-semibold leading-none">leroy_jenkins72</h2>
-                                <span className="inline-block text-xs leading-none dark:text-gray-400">Somewhere</span>
+                                <h2 className="text-sm font-semibold leading-none">Nasar Ahmad</h2>
+                                <span className="inline-block text-xs leading-none dark:text-gray-400">web developer</span>
                             </div>
                         </div>
                         <button title="Open options" type="button">
@@ -22,9 +23,31 @@ const PopulerPost = () => {
                             </svg>
                         </button>
                     </div>
-                    <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
+                    {/* img */}
+                    {/* <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" /> */}
                     <div className="p-3">
-                        <div className="flex items-center justify-between">
+                        {/* Post */}
+                        <div className="space-y-3 mb-4">
+                            <p className="text-sm">
+                                <span className="text-base font-semibold">we are learning.....</span>Nemo ea quasi debitis impedit!
+                            </p>
+                        </div>
+                        {/* like person */}
+                        <div className="flex flex-wrap items-center pt-3 pb-1">
+                            <div className="flex items-center space-x-2">
+                                <div className="flex -space-x-1">
+                                    <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
+                                    <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-800" src="https://source.unsplash.com/40x40/?portrait?2" />
+                                    <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-800" src="https://source.unsplash.com/40x40/?portrait?3" />
+                                </div>
+                                <span className="text-sm">Liked by
+                                    <span className="font-semibold">Mamba UI</span>and
+                                    <span className="font-semibold">86 others</span>
+                                </span>
+                            </div>
+                        </div>
+                        {/* love comment and share */}
+                        <div className="flex items-center justify-between py-3">
                             <div className="flex items-center space-x-3">
                                 <button type="button" title="Like post" className="flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
@@ -48,6 +71,40 @@ const PopulerPost = () => {
                                 </svg>
                             </button>
                         </div>
+                        {/* add comment */}
+                        <input type="text" placeholder="Add a comment..." className="w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
+
+                    </div>
+                </div>
+                {/* end 01 */}
+                <div className="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+                    {/* profile */}
+                    <div className="flex items-center justify-between p-3">
+                        <div className="flex items-center space-x-2">
+                            <img src="https://source.unsplash.com/50x50/?portrait" alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
+                            <div className="-space-y-1">
+                                <h2 className="text-sm font-semibold leading-none">Nasar Ahmad</h2>
+                                <span className="inline-block text-xs leading-none dark:text-gray-400">web developer</span>
+                            </div>
+                        </div>
+                        <button title="Open options" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
+                                <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
+                                <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
+                                <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    {/* img */}
+                    {/* <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" /> */}
+                    <div className="p-3">
+                        {/* Post */}
+                        <div className="space-y-3 mb-4">
+                            <p className="text-sm">
+                                <span className="text-base font-semibold">we are learning.....</span>Nemo ea quasi debitis impedit!
+                            </p>
+                        </div>
+                        {/* like person */}
                         <div className="flex flex-wrap items-center pt-3 pb-1">
                             <div className="flex items-center space-x-2">
                                 <div className="flex -space-x-1">
@@ -61,35 +118,8 @@ const PopulerPost = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="space-y-3">
-                            <p className="text-sm">
-                                <span className="text-base font-semibold">leroy_jenkins72</span>Nemo ea quasi debitis impedit!
-                            </p>
-                            <input type="text" placeholder="Add a comment..." className="w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
-                        </div>
-                    </div>
-                </div>
-                {/* --------------------card 1 end  */}
-                <div className="rounded-md shadow-md sm:w-96 dark:bg-gray-900 dark:text-gray-100">
-                    <div className="flex items-center justify-between p-3">
-                        <div className="flex items-center space-x-2">
-                            <img src="https://source.unsplash.com/50x50/?portrait" alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
-                            <div className="-space-y-1">
-                                <h2 className="text-sm font-semibold leading-none">leroy_jenkins72</h2>
-                                <span className="inline-block text-xs leading-none dark:text-gray-400">Somewhere</span>
-                            </div>
-                        </div>
-                        <button title="Open options" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
-                                <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
-                                <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
-                    <div className="p-3">
-                        <div className="flex items-center justify-between">
+                        {/* love comment and share */}
+                        <div className="flex items-center justify-between py-3">
                             <div className="flex items-center space-x-3">
                                 <button type="button" title="Like post" className="flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
@@ -113,6 +143,40 @@ const PopulerPost = () => {
                                 </svg>
                             </button>
                         </div>
+                        {/* add comment */}
+                        <input type="text" placeholder="Add a comment..." className="w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
+
+                    </div>
+                </div>
+                {/* end 02 */}
+                <div className="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+                    {/* profile */}
+                    <div className="flex items-center justify-between p-3">
+                        <div className="flex items-center space-x-2">
+                            <img src="https://source.unsplash.com/50x50/?portrait" alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
+                            <div className="-space-y-1">
+                                <h2 className="text-sm font-semibold leading-none">Nasar Ahmad</h2>
+                                <span className="inline-block text-xs leading-none dark:text-gray-400">web developer</span>
+                            </div>
+                        </div>
+                        <button title="Open options" type="button">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
+                                <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
+                                <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
+                                <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    {/* img */}
+                    {/* <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" /> */}
+                    <div className="p-3">
+                        {/* Post */}
+                        <div className="space-y-3 mb-4">
+                            <p className="text-sm">
+                                <span className="text-base font-semibold">we are learning.....</span>Nemo ea quasi debitis impedit!
+                            </p>
+                        </div>
+                        {/* like person */}
                         <div className="flex flex-wrap items-center pt-3 pb-1">
                             <div className="flex items-center space-x-2">
                                 <div className="flex -space-x-1">
@@ -126,35 +190,8 @@ const PopulerPost = () => {
                                 </span>
                             </div>
                         </div>
-                        <div className="space-y-3">
-                            <p className="text-sm">
-                                <span className="text-base font-semibold">leroy_jenkins72</span>Nemo ea quasi debitis impedit!
-                            </p>
-                            <input type="text" placeholder="Add a comment..." className="w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
-                        </div>
-                    </div>
-                </div>
-                {/* --------------------card 2 end  */}
-                <div className="rounded-md shadow-md sm:w-96 dark:bg-gray-900 dark:text-gray-100">
-                    <div className="flex items-center justify-between p-3">
-                        <div className="flex items-center space-x-2">
-                            <img src="https://source.unsplash.com/50x50/?portrait" alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
-                            <div className="-space-y-1">
-                                <h2 className="text-sm font-semibold leading-none">leroy_jenkins72</h2>
-                                <span className="inline-block text-xs leading-none dark:text-gray-400">Somewhere</span>
-                            </div>
-                        </div>
-                        <button title="Open options" type="button">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                <path d="M256,144a64,64,0,1,0-64-64A64.072,64.072,0,0,0,256,144Zm0-96a32,32,0,1,1-32,32A32.036,32.036,0,0,1,256,48Z"></path>
-                                <path d="M256,368a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,368Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,464Z"></path>
-                                <path d="M256,192a64,64,0,1,0,64,64A64.072,64.072,0,0,0,256,192Zm0,96a32,32,0,1,1,32-32A32.036,32.036,0,0,1,256,288Z"></path>
-                            </svg>
-                        </button>
-                    </div>
-                    <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
-                    <div className="p-3">
-                        <div className="flex items-center justify-between">
+                        {/* love comment and share */}
+                        <div className="flex items-center justify-between py-3">
                             <div className="flex items-center space-x-3">
                                 <button type="button" title="Like post" className="flex items-center justify-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
@@ -178,28 +215,12 @@ const PopulerPost = () => {
                                 </svg>
                             </button>
                         </div>
-                        <div className="flex flex-wrap items-center pt-3 pb-1">
-                            <div className="flex items-center space-x-2">
-                                <div className="flex -space-x-1">
-                                    <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-800" src="https://source.unsplash.com/40x40/?portrait?1" />
-                                    <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-800" src="https://source.unsplash.com/40x40/?portrait?2" />
-                                    <img alt="" className="w-5 h-5 border rounded-full dark:bg-gray-500 dark:border-gray-800" src="https://source.unsplash.com/40x40/?portrait?3" />
-                                </div>
-                                <span className="text-sm">Liked by
-                                    <span className="font-semibold">Mamba UI</span>and
-                                    <span className="font-semibold">86 others</span>
-                                </span>
-                            </div>
-                        </div>
-                        <div className="space-y-3">
-                            <p className="text-sm">
-                                <span className="text-base font-semibold">leroy_jenkins72</span>Nemo ea quasi debitis impedit!
-                            </p>
-                            <input type="text" placeholder="Add a comment..." className="w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
-                        </div>
+                        {/* add comment */}
+                        <input type="text" placeholder="Add a comment..." className="w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
+
                     </div>
                 </div>
-                {/* --------------------card 3 end  */}
+                {/* end 03 */}
             </div>
         </div>
 

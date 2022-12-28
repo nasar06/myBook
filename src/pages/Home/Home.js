@@ -9,7 +9,7 @@ const Home = () => {
         <div>
             <div className='md:flex gap-8 justify-between'>
                 {/* left sidebar */}
-                <div className='md:w-1/4 bg-white md:block hidden '>
+                <div className='md:w-1/4  h-96 bg-white md:block hidden '>
                     <LeftSideBar></LeftSideBar>
                 </div>
 

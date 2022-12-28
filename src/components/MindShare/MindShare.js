@@ -3,8 +3,8 @@ import { FaRegImages } from 'react-icons/fa';
 
 const MindShare = () => {
     return (
-        <div>
-            <section className="mt-5 px-4 dark:bg-gray-800 dark:text-gray-50 mx-auto">
+        <div className='border-b-4 py-5'>
+            <section className="px-4 mx-auto">
                 <form novalidate="" action="" className="container flex flex-col mx-auto space-y-5 ng-untouched ng-pristine ng-valid">
 
                     <fieldset className="rounded-md dark:bg-gray-900">
