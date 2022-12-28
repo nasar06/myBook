@@ -1,8 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import logo from '../../img/logo.png'
 
 const NavBar = () => {
+    const {user, signOutUser} = useContext(AuthContext)
+    console.log(user)
+
+    // //signOut
+    // const handelLogOut =() =>{
+
+    // }
+
+
     return (
         <header className="mb-12 dark:bg-gray-800 dark:text-gray-100 bg-white">
             <div className="container flex justify-between h-16 mx-auto">
@@ -36,7 +46,14 @@ const NavBar = () => {
                         </span>
                         <input type="search" name="Search" placeholder="Search..." className="w-32 py-2 pl-10 text-sm rounded-md sm:w-auto focus:outline-none dark:bg-gray-800 dark:text-gray-100 focus:dark:bg-gray-900" />
                     </div>
-                    <Link to="/login" className="hidden px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900">Log in</Link>
+                    {
+                        user?.uid?
+                        <Link onClick={signOutUser} to="/login" className="hidden px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900">Log Out</Link>
+                        :
+                        <Link to="/login" className="hidden px-6 py-2 font-semibold rounded lg:block dark:bg-violet-400 dark:text-gray-900">Log in</Link>
+                    }
+                    
+                    
                 </div>
                 <Link to='/menu'>
                     <button title="Open menu" type="button" className="p-4 lg:hidden">
