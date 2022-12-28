@@ -1,7 +1,9 @@
 import React from 'react';
+import { AiOutlineArrowRight } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 
 const Card = ({post}) => {
-    const {postText,postImg,userEmail,userName,userTitle,userImg} = post
+    const {postText,postImg,userEmail,userName,userTitle,userImg, _id} = post
     console.log('card---',post)
     return (
         <div className="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
@@ -55,11 +57,9 @@ const Card = ({post}) => {
                                 </svg>
                             </button>
                         </div>
-                        {/* <button type="button" title="Bookmark post" className="flex items-center justify-center">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
-                                    <path d="M424,496H388.75L256.008,381.19,123.467,496H88V16H424ZM120,48V456.667l135.992-117.8L392,456.5V48Z"></path>
-                                </svg>
-                            </button> */}
+                        <Link to={`/details/${_id}`} type="button" title="Details" className="flex items-center justify-center">
+                                <AiOutlineArrowRight />
+                            </Link>
                     </div>
                     {/* add comment */}
                     <div className='flex'>

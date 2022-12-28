@@ -3,9 +3,11 @@ import LeftSideBar from "../components/LeftSideBar/LeftSideBar";
 import Menu from "../components/Menu/Menu";
 import RightSideBar from "../components/RightSideBar/RightSideBar";
 import Main from "../layOut/Main";
+import Details from "../pages/Details/Details";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
+import Media from "../pages/Media/Media";
 import NotFound from "../pages/NotFound/NotFound";
 
 const router= createBrowserRouter([
@@ -34,12 +36,14 @@ const router= createBrowserRouter([
                 element: <Menu></Menu>
             },
             {
-                path: '/leftSideBar',
-                element: <LeftSideBar></LeftSideBar>
+                path: '/media',
+                element: <Media></Media>
             },
             {
-                path: '/rightSideBar',
-                element: <RightSideBar></RightSideBar>
+                path: '/details/:id',
+                element: <Details></Details>,
+                loader: ({params})=> fetch(`http://localhost:5000/details/${params.id}`)
+                
             },
         ]
     },

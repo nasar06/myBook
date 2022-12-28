@@ -3,16 +3,16 @@ import { useQuery } from 'react-query';
 import Card from '../Card/Card';
 
 const PopulerPost = () => {
-    const {data: allPost = []} = useQuery({
+    const {data: allPost = [],} = useQuery({
         queryKey: ['userPost'],
         queryFn: async () =>{
             const res = await fetch('http://localhost:5000/userPost')
             const data = res.json()
             return data
+            
         }
     })
-    console.log(allPost)
-
+    
 
     return (
         <div className='my-5'>

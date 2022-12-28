@@ -33,9 +33,7 @@ const MindShare = () => {
             body: JSON.stringify(postInfo)
         })
             .then(res => res.json())
-            .then(data => {
-                // toast("Service added successfully")
-            })
+            .then(data => {})
             .catch(err => console.error(err))
         console.log(postInfo)
     }
@@ -47,8 +45,8 @@ const MindShare = () => {
                     <fieldset className="rounded-md dark:bg-gray-900">
 
                         <div className="flex gap-3">
-                            <textarea name='postText' placeholder="what's on your mind?" className="w-full border pl-3 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900"></textarea>
-                            <button type="submit" className="text-white font-bold px-8 py-3 font-semibold bg-blue-400 rounded">Share</button>
+                            <input name='postText' placeholder="what's on your mind?" className="w-full border pl-3 rounded-md dark:border-gray-700 dark:text-gray-900"></input>
+                            <button type="submit" className="-ml-5 rounded-l-none text-white font-bold px-8 py-3 font-semibold bg-blue-400 rounded">Share</button>
                         </div>
                     </fieldset>
                     <input type="file" name="postImg" id="files" className="hidden pr-8 rounded-md dark:border-gray-700 dark:text-gray-400 dark:bg-gray-800" />
