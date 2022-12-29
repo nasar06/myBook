@@ -3,7 +3,8 @@ import { useQuery } from 'react-query';
 import Card from '../Card/Card';
 
 const PopulerPost = () => {
-    const {data: allPost = [],} = useQuery({
+
+    const {data: allPost = []} = useQuery({
         queryKey: ['userPost'],
         queryFn: async () =>{
             const res = await fetch('http://localhost:5000/popularPost')

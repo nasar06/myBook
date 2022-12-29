@@ -1,35 +1,86 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AiOutlineArrowRight } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import toast from 'react-hot-toast';
 import { RxHeartFilled } from 'react-icons/rx';
+import moment from 'moment';
+import { useQuery } from 'react-query';
+import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import Comment from '../Comment/Comment';
 
-const Card = ({post}) => {
 
-    const {postText,postImg,userEmail,userName,userTitle,userImg, _id, love} = post
+const Card = ({ post }) => {
+    const {user} = useContext(AuthContext)
+    const { postText, postImg, userEmail, userName, userTitle, userImg, _id, love } = post
     const [heart, setHeart] = useState('text-gray-400')
+    
 
-    const handelLove = id=>{
-        console.log('clicked',id)
-        fetch(`http://localhost:5000/love/${id}`,{
+
+    const { data: comments = [], refetch } = useQuery({
+        queryKey: ['comment'],
+        queryFn: async () => {
+            const res = await fetch(`http://localhost:5000/comment`)
+            const data = await res.json()
+            return data
+        }
+    })
+    const PostComment = comments?.filter(cmnt => cmnt.postId === _id)
+    console.log('rest-comment', PostComment)
+
+    //React love Put
+    const handelLove = id => {
+        fetch(`http://localhost:5000/love/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
             }
         })
-        .then(result =>{
-            setHeart('text-red-500')
-            toast.success('Post is Liked')
-        })
-        .catch(err=> console.error(err))
+            .then(result => {
+                setHeart('text-red-500')
+                toast.success('Post is Liked')
+            })
+            .catch(err => console.error(err))
+
     }
 
+    //post Comment 
+    const handelComment = e => {
+        e.preventDefault()
+        const comment = e.target.comment.value
+        const time = moment().format('Do MM YYYY, h:mm:ss a')
+        const commentInfo = {
+            comment,
+            time,
+            postId: _id,
+            userImg: user?.photoURL,
+            userName: user?.displayName,
+            userEmail: user?.email,
+        }
+        fetch('http://localhost:5000/comment', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(commentInfo)
+        })
+            .then(result => {
+                toast.success('comment added')
+                refetch()
+            })
+            .catch(err => console.error(err))
+
+        refetch()
+    }
+
+
+
     return (
-        <div className="w-full rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100">
+        <div className="w-full dark:bg-gray-900 dark:text-gray-100">
+            <div className='rounded-md shadow-md'>
                 {/* profile */}
                 <div className="flex items-center justify-between p-3">
                     <div className="flex items-center space-x-2">
-                        <img src={userImg? userImg: 'https://www.codewithharry.com/img/user.png'} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
+                        <img src={userImg ? userImg : 'https://www.codewithharry.com/img/user.png'} alt="" className="object-cover object-center w-8 h-8 rounded-full shadow-sm dark:bg-gray-500 dark:border-gray-700" />
                         <div className="-space-y-1">
                             <h2 className="text-sm font-semibold leading-none">{userName}</h2>
                             <span className="inline-block text-xs leading-none dark:text-gray-400">{userTitle}</span>
@@ -48,7 +99,7 @@ const Card = ({post}) => {
                 {
                     postImg && <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
                 }
-                
+
                 <div className="p-3">
                     {/* Post */}
                     <div className="space-y-3 mb-4">
@@ -60,10 +111,10 @@ const Card = ({post}) => {
                     {/* love comment and share */}
                     <div className="flex items-center justify-between py-3">
                         <div className="flex items-center space-x-3">
-                            <button onClick={()=>handelLove(_id)} type="button" title="Like post" className="flex items-center justify-center">
-                                
-                                <RxHeartFilled className={`text-2xl ${love?'text-red-500':heart}`}  />
-                                
+                            <button onClick={() => handelLove(_id)} type="button" title="Like post" className="flex items-center justify-center">
+
+                                <RxHeartFilled className={`text-2xl ${love ? 'text-red-500' : heart}`} />
+
                             </button>
                             <button type="button" title="Add a comment" className="flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" className="w-5 h-5 fill-current">
@@ -77,17 +128,26 @@ const Card = ({post}) => {
                             </button>
                         </div>
                         <Link to={`/details/${_id}`} type="button" title="Details" className="flex items-center justify-center">
-                                <AiOutlineArrowRight />
-                            </Link>
+                            <AiOutlineArrowRight />
+                        </Link>
                     </div>
                     {/* add comment */}
-                    <div className='flex'>
-                        <input type="text" placeholder="Add a comment..." className="py-1 w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
-                        <button className='bg-blue-400 py-1 text-white px-2 rounded'>Comment</button>
-                    </div>
+                    <form onSubmit={handelComment} className='flex'>
+                        <input type="text" name='comment' placeholder="Add a comment..." className="py-1 w-full py-0.5 dark:bg-transparent border-none rounded text-sm pl-0 dark:text-gray-100" />
+                        <button type='submit' className='bg-blue-400 py-1 text-white px-2 rounded'>Comment</button>
+                    </form>
 
                 </div>
             </div>
+            <div className='my-3'>
+                {
+                    PostComment?.map(comment => <Comment
+                    key={comment.postId}
+                    comment = {comment}
+                    ></Comment>)
+                }
+            </div>
+        </div>
     );
 };
 

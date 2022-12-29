@@ -3,6 +3,7 @@ import LeftSideBar from "../components/LeftSideBar/LeftSideBar";
 import Menu from "../components/Menu/Menu";
 import RightSideBar from "../components/RightSideBar/RightSideBar";
 import Main from "../layOut/Main";
+import About from "../pages/About/About";
 import Details from "../pages/Details/Details";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
@@ -38,6 +39,10 @@ const router= createBrowserRouter([
             {
                 path: '/media',
                 element: <Media></Media>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             },
             {
                 path: '/details/:id',

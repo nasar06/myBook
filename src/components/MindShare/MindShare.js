@@ -27,6 +27,7 @@ const MindShare = () => {
             time
 
         }
+        form.reset()
 
         fetch('http://localhost:5000/userPost', {
             method: 'POST',
