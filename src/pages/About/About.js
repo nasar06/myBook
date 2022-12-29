@@ -1,8 +1,22 @@
 import React, { useContext } from 'react';
+import { FaAddressCard, FaUniversity } from 'react-icons/fa';
+import { useQuery } from 'react-query';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
 const About = () => {
     const { user } = useContext(AuthContext)
+
+    const {data: users=[]} = useQuery({
+        queryKey: ['users'],
+        queryFn: async()=>{
+            const res = await fetch(`http://localhost:5000/users?email=${user?.email}`)
+            const data = await res.json()
+            return data
+        }
+    })
+
+    console.log('.........',users)
+
     return (
         <div className='flex gap-5 w-5/6 mx-auto'>
             <div className='col-4'>
@@ -10,8 +24,8 @@ const About = () => {
                     <img src="https://source.unsplash.com/150x150/?portrait?3" alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
                     <div className="space-y-4 text-center divide-y divide-gray-700">
                         <div className="my-2 space-y-1">
-                            <h2 className="text-xl font-semibold sm:text-2xl">{user?.displayName}</h2>
-                            <p className="px-5 text-xs sm:text-base dark:text-gray-400">{user?.email}</p>
+                            <h2 className="text-xl font-semibold sm:text-2xl">{users?.userName}</h2>
+                            <p className="px-5 text-xs sm:text-base dark:text-gray-400">{users?.userEmail}</p>
                         </div>
                         <div className="flex justify-center pt-2 space-x-4 align-center">
                             <a rel="noopener noreferrer" href="#" aria-label="GitHub" className="p-2 rounded-md dark:text-gray-100 hover:dark:text-violet-400">
@@ -46,12 +60,11 @@ const About = () => {
                             <div className="relative col-span-12 px-4 space-y-6 sm:col-span-9">
                                 <div className="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:dark:bg-gray-700">
                                     <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
-                                        <h3 className="text-xl font-semibold tracking-wide">University</h3>
-                                        <time className="text-xs tracking-wide uppercase dark:text-gray-400">Dec 2020</time>
-                                        <p className="mt-3">Unan University from china</p>
+                                        <h3 className="text-xl font-semibold tracking-wide flex items-center"><FaUniversity className='mr-3' /> University</h3>
+                                        <p className="mt-3">Unnan University from china</p>
                                     </div>
                                     <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
-                                        <h3 className="text-xl font-semibold tracking-wide">Address</h3>
+                                        <h3 className="text-xl font-semibold tracking-wide flex items-center"><FaAddressCard className='mr-3' /> Address</h3>
                                         <time className="text-xs tracking-wide uppercase dark:text-gray-400"></time>
                                         <p className="mt-3">kachua, Chandpur</p>
                                     </div>

@@ -5,7 +5,7 @@ import logo from '../../img/logo.png'
 
 const NavBar = () => {
     const {user, signOutUser} = useContext(AuthContext)
-    console.log(user)
+    
 
     // //signOut
     // const handelLogOut =() =>{
