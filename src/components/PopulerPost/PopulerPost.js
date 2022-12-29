@@ -6,7 +6,7 @@ const PopulerPost = () => {
     const {data: allPost = [],} = useQuery({
         queryKey: ['userPost'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/userPost')
+            const res = await fetch('http://localhost:5000/popularPost')
             const data = res.json()
             return data
             

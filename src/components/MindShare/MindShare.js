@@ -3,6 +3,8 @@ import { FaRegImages } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import moment from 'moment';
+import toast from 'react-hot-toast';
+
 
 const MindShare = () => {
 
@@ -34,7 +36,9 @@ const MindShare = () => {
             body: JSON.stringify(postInfo)
         })
             .then(res => res.json())
-            .then(data => {})
+            .then(data => {
+                toast.success('successfully added')
+            })
             .catch(err => console.error(err))
         console.log(postInfo)
     }
