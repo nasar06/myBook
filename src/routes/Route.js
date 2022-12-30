@@ -10,6 +10,7 @@ import Login from "../pages/Login/Login";
 import Register from "../pages/Login/Register";
 import Media from "../pages/Media/Media";
 import NotFound from "../pages/NotFound/NotFound";
+import PrivateRoute from "./PrivateRoute";
 
 const router= createBrowserRouter([
     {
@@ -18,11 +19,11 @@ const router= createBrowserRouter([
         children: [
             {
                 path: '/',
-                element: <Home></Home>
+                element: <PrivateRoute><Home></Home></PrivateRoute>
             },
             {
                 path: '/home',
-                element: <Home></Home>
+                element: <PrivateRoute><Home></Home></PrivateRoute>
             },
             {
                 path: '/login',
@@ -38,16 +39,16 @@ const router= createBrowserRouter([
             },
             {
                 path: '/media',
-                element: <Media></Media>
+                element: <PrivateRoute><Media></Media></PrivateRoute>
             },
             {
                 path: '/about',
-                element: <About></About>
+                element: <PrivateRoute><About></About></PrivateRoute>
             },
             {
                 path: '/details/:id',
                 element: <Details></Details>,
-                loader: ({params})=> fetch(`http://localhost:5000/details/${params.id}`)
+                loader: ({params})=> fetch(`https://my-book-server.vercel.app/details/${params.id}`)
                 
             },
         ]

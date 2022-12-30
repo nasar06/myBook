@@ -12,9 +12,6 @@ const Register = () => {
     const { signUp, UpdateProfileName, loginWithGoogle } = useContext(AuthContext)
     
 
-
-    
-
     //signUp with email and password
     const handelSignUp = async (data) => {
 
@@ -65,7 +62,7 @@ const Register = () => {
             userPhoto: userInfo.photoURL
         }
 
-        fetch(`http://localhost:5000/users?email=${userInfo.email}`, {
+        fetch(`https://my-book-server.vercel.app/users?email=${userInfo.email}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -115,7 +112,7 @@ const Register = () => {
                         <label className="label"> <span className="label-text">Forget Password?</span></label>
                         {/* {errors.password && <p className='text-red-600'>{errors.password?.message}</p>} */}
                     </div>
-                    <input className='btn bg-blue-400 rounded py-2 my-5 text-white font-bold w-full' value="Sign Up" type="submit" />
+                    <button className='btn bg-blue-500 rounded py-2 my-5 text-white font-bold w-full' type="submit" >Sign Up</button>
                     
                 </form>
                 <p>You have an account <Link className='text-blue-500' to="/login">Please login</Link></p>

@@ -19,7 +19,7 @@ const Card = ({ post }) => {
     const { data: comments = [], refetch } = useQuery({
         queryKey: ['comment'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/comment`)
+            const res = await fetch(`https://my-book-server.vercel.app/comment`)
             const data = await res.json()
             return data
         }
@@ -29,7 +29,7 @@ const Card = ({ post }) => {
 
     //React love Put
     const handelLove = id => {
-        fetch(`http://localhost:5000/love/${id}`, {
+        fetch(`https://my-book-server.vercel.app/love/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
@@ -58,7 +58,7 @@ const Card = ({ post }) => {
             userEmail: user?.email,
         }
         
-        fetch('http://localhost:5000/comment', {
+        fetch('https://my-book-server.vercel.app/comment', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -99,7 +99,7 @@ const Card = ({ post }) => {
 
                 {/* img */}
                 {
-                    postImg && <img src="https://source.unsplash.com/301x301/?random" alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
+                    postImg && <img src={postImg} alt="" className="object-cover object-center w-full h-72 dark:bg-gray-500" />
                 }
 
                 <div className="p-3">

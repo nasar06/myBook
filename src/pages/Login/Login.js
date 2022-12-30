@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 import { toast } from 'react-hot-toast';
@@ -10,14 +10,15 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
 
     const { loginUser, loginWithGoogle } = useContext(AuthContext)
-
+    const location = useLocation()
+    const from = location.state?.form?.pathName || '/'
     const navigate = useNavigate()
 
     //login with email and password
     const handelSignIn = (data) => {
         loginUser(data.email, data.password)
             .then(result => {
-                navigate('/')
+                navigate(from, { replace: true })
                 toast.success('successfully login')
             })
             .catch(err => console.error(err))
@@ -31,7 +32,7 @@ const Login = () => {
 
             //insert user db
             userData(user.user)
-
+            navigate(from, { replace: true })
         } catch (error) {
             toast.error(error.message)
         }
@@ -47,7 +48,7 @@ const Login = () => {
             userPhoto: userInfo.photoURL
         }
 
-        fetch(`http://localhost:5000/users?email=${userInfo.email}`, {
+        fetch(`https://my-book-server.vercel.app/users?email=${userInfo.email}`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -89,7 +90,7 @@ const Login = () => {
                         <label className="label"> <span className="label-text">Forget Password?</span></label>
                         {/* {errors.password && <p className='text-red-600'>{errors.password?.message}</p>} */}
                     </div>
-                    <input className='btn bg-blue-400 rounded py-2 my-5 text-white font-bold w-full' value="Sign In" type="submit" />
+                    <button className='btn bg-blue-500 rounded py-2 my-5 text-white font-bold w-full' type="submit">Login</button>
 
                 </form>
                 <p>You have no account <Link className='text-blue-500' to="/register">Please Sign up</Link></p>

@@ -10,10 +10,14 @@ const About = () => {
     const { user } = useContext(AuthContext)
     const [openModal, setOpenModal] = useState(true)
 
+    
+    
+
+
     const { data: users = [] } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/users?email=${user?.email}`)
+            const res = await fetch(`https://my-book-server.vercel.app/users?email=${user?.email}`)
             const data = await res.json()
             return data
         }
@@ -38,20 +42,20 @@ const About = () => {
             userPhoto: users?.userPhoto,
 
         }
-        console.log('update user', updatedDoc)
+        // console.log('update user', updatedDoc)
 
-        fetch(`http://localhost:5000/userUpdate?email=${users?.userEmail}`, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updatedDoc)
-        })
-            .then(res => res.json())
-            .then(data => {
-                toast.success('successfully added')
-            })
-            .catch(err => console.error(err))
+        // fetch(`https://my-book-server.vercel.app/userUpdate?email=${users?.userEmail}`, {
+        //     method: 'PUT',
+        //     headers: {
+        //         'content-type': 'application/json'
+        //     },
+        //     body: JSON.stringify(updatedDoc)
+        // })
+        //     .then(res => res.json())
+        //     .then(data => {
+        //         toast.success('successfully added')
+        //     })
+        //     .catch(err => console.error(err))
     }
 
 
@@ -167,7 +171,7 @@ return (
                     <fieldset className="w-full mb-5 space-y-1 dark:text-gray-100">
                         {/* <label for="url" className="block text-sm font-medium">University</label> */}
                         <div className="flex justify-center">
-                        <input type="file" name="files" id="files" className="border-2 rounded-md" />
+                        <input type="file" name="img" id="img" className="border-2 rounded-md" />
                             
                         </div>
                     </fieldset>

@@ -7,7 +7,7 @@ const PopulerPost = () => {
     const {data: allPost = []} = useQuery({
         queryKey: ['userPost'],
         queryFn: async () =>{
-            const res = await fetch('http://localhost:5000/popularPost')
+            const res = await fetch('https://my-book-server.vercel.app/popularPost')
             const data = res.json()
             return data
             
