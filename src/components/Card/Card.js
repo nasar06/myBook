@@ -48,6 +48,7 @@ const Card = ({ post }) => {
         e.preventDefault()
         const comment = e.target.comment.value
         const time = moment().format('Do MM YYYY, h:mm:ss a')
+
         const commentInfo = {
             comment,
             time,
@@ -56,6 +57,7 @@ const Card = ({ post }) => {
             userName: user?.displayName,
             userEmail: user?.email,
         }
+        
         fetch('http://localhost:5000/comment', {
             method: 'POST',
             headers: {

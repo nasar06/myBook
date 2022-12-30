@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 
 const Login = () => {
@@ -17,22 +18,50 @@ const Login = () => {
         loginUser(data.email, data.password)
             .then(result => {
                 navigate('/')
+                toast.success('successfully login')
             })
             .catch(err => console.error(err))
     }
 
-    //login with google
-    const handelGoogleLogin = () => {
-        loginWithGoogle()
-            .then(result => {
-                navigate('/')
-                // toast.success('successfully login')
-                
-            })
-            .catch(err => console.log(err))
+     //login with google
+     const handelGoogleLogin = async () => {
+        try {
+            const user = await loginWithGoogle()
+            toast.success('successfully login')
+
+            //insert user db
+            userData(user.user)
+
+        } catch (error) {
+            toast.error(error.message)
+        }
     }
 
+    // post users collection
+    const userData = (userInfo) => {
 
+        //set user info for db
+        const user = {
+            userName: userInfo.displayName,
+            userEmail: userInfo.email,
+            userPhoto: userInfo.photoURL
+        }
+
+        fetch(`http://localhost:5000/users?email=${userInfo.email}`, {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.acknowledged) {
+                    toast.success('User Inserted Successfully')
+                }
+            })
+    }
 
 
     return (
