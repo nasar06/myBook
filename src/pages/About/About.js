@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { FaAddressCard, FaUniversity } from 'react-icons/fa';
+import { FaAddressCard, FaEdit, FaPhoneSquareAlt, FaUniversity } from 'react-icons/fa';
 import { useQuery } from 'react-query';
 import { AuthContext } from '../../context/AuthProvider/AuthProvider';
 
@@ -18,9 +18,10 @@ const About = () => {
     console.log('.........',users)
 
     return (
-        <div className='flex gap-5 w-5/6 mx-auto'>
+        <div className='relative flex md:flex-row flex-col items-center gap-y-3  gap-x-5 justify-center'>
+            
             <div className='col-4'>
-                <div className="flex flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-900 dark:text-gray-100">
+                <div className="flex bg-white h-full flex-col justify-center max-w-xs p-6 shadow-md rounded-xl sm:px-12 dark:bg-gray-900 dark:text-gray-100">
                     <img src="https://source.unsplash.com/150x150/?portrait?3" alt="" className="w-32 h-32 mx-auto rounded-full dark:bg-gray-500 aspect-square" />
                     <div className="space-y-4 text-center divide-y divide-gray-700">
                         <div className="my-2 space-y-1">
@@ -52,12 +53,12 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <div className='col-8'>
-                <section className="dark:bg-gray-800 dark:text-gray-100">
+            <div className='col-6'>
+                <section className="bg-white h-full rounded-xl dark:bg-gray-800 dark:text-gray-100">
                     <div className="container max-w-5xl px-4 mx-auto">
                         <div className="grid gap-4 mx-4 sm:grid-cols-12">
                            
-                            <div className="relative col-span-12 px-4 space-y-6 sm:col-span-9">
+                            <div className="relative my-5 col-span-12 px-4 space-y-6 sm:col-span-9">
                                 <div className="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:dark:bg-gray-700">
                                     <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
                                         <h3 className="text-xl font-semibold tracking-wide flex items-center"><FaUniversity className='mr-3' /> University</h3>
@@ -68,13 +69,20 @@ const About = () => {
                                         <time className="text-xs tracking-wide uppercase dark:text-gray-400"></time>
                                         <p className="mt-3">kachua, Chandpur</p>
                                     </div>
+                                    <div className="flex flex-col sm:relative sm:before:absolute sm:before:top-2 sm:before:w-4 sm:before:h-4 sm:before:rounded-full sm:before:left-[-35px] sm:before:z-[1] before:dark:bg-violet-400">
+                                        <h3 className="text-xl font-semibold tracking-wide flex items-center"><FaPhoneSquareAlt className='mr-3' /> Phone</h3>
+                                        <time className="text-xs tracking-wide uppercase dark:text-gray-400"></time>
+                                        <p className="mt-3">kachua, Chandpur</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
             </div>
-
+            <div className='col-2 absolute top-0 right-12 md:right-64'>
+                <FaEdit className='text-2xl' />
+            </div>
 
         </div>
     );
